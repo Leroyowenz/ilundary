@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AddCount extends StatefulWidget {
   const AddCount({super.key});
 
@@ -11,43 +10,45 @@ class AddCount extends StatefulWidget {
 class _AddCountState extends State<AddCount> {
   int counter = 0;
 
-  
-  addCounter(){
-setState(() {
-  counter++; 
-  });
+  addCounter() {
+    setState(() {
+      counter++;
+    });
   }
 
-  subCounter(){
-setState(() {
-  counter--;
-});
+  subCounter() {
+    setState(() {
+      counter--;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
-
-      children:  [
-        Text("$counter", style: const TextStyle(fontSize: 25.0),
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              addCounter();
+            },
+            child: const Text("Add")),
+        Text(
+          "$counter",
+          style: const TextStyle(fontSize: 25.0),
         ),
-        ElevatedButton(onPressed: (){
-          addCounter();
-        }, child: const Text("Add")),
-        
-        ElevatedButton(onPressed: (){
-          if(counter <= 0) {  
-        //
-        }
-        else{
-          setState(() {
-          counter--;
-        });
-        }
-
-        }, child: const Text("Sub"))
+        ElevatedButton(
+            onPressed: () {
+              if (counter <= 0) {
+                //
+              } else {
+                setState(() {
+                  counter--;
+                });
+              }
+            },
+            child: const Text("Sub"))
       ],
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     );
   }
 }
